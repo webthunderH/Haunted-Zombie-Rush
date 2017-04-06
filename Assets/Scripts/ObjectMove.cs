@@ -14,8 +14,8 @@ public class ObjectMove : MonoBehaviour {
 
 	// Update is called once per frame
 	protected virtual void Update () {
-		transform.Translate(Vector3.left * (speed *Time.deltaTime));
-		if (transform.localPosition.x <= ResetPosition)
+		transform.Translate(Vector3.right * (speed *Time.deltaTime));
+		if (transform.localPosition.x >= ResetPosition)
 		{
 			Vector3 newPos = new Vector3(StartingPostion, transform.position.y, transform.position.z);
 			transform.position = newPos;

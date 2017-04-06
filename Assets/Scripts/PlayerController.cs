@@ -7,12 +7,15 @@ public class PlayerController : MonoBehaviour {
 	private Animator anim;
 	private Rigidbody rigidBody;
 	private bool jump = false;
+	private AudioSource audioSource;
 	[SerializeField] private float jumpForce;
+	[SerializeField] private AudioClip sfxJump;
 	// Use this for initialization
 	void Start () 
 	{
 		anim = GetComponent<Animator>();
 		rigidBody = GetComponent<Rigidbody>();
+		audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			rigidBody.velocity = new Vector2(0, 0);
 			rigidBody.AddForce(jumpForce * Vector3.up, ForceMode.Impulse);
+			audioSource.PlayOneShot(sfxJump);
 			jump = false;
 		}
 	}
